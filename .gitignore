@@ -2,3 +2,6 @@
 .coverage
 __pycache__/
 *.pyc
+.python-version
+main.py
+parcial1.md
