@@ -1,0 +1,13 @@
+SM-1: C. Es desarrollo tradicional con pruebas al final, porque el problema es que los defectos salen tarde y corregirlos cuesta mucho más. Las otras opciones no describen bien ese flujo.
+
+SM-2: B. Se viola la primera regla de Uncle Bob porque el código de producción apareció antes de que existiera un test que fallara. Las otras opciones no aplican al orden que se mostró.
+
+PA-1: En GREEN TDD pide escribir solo lo necesario para que el test pase. Eso sirve para comprobar que la funcionalidad realmente existe y para no meter lógica de más antes de tiempo. Si uno intenta hacer el código limpio y completo desde el inicio, se pierde el ritmo del ciclo y se deja de saber qué cambio hizo pasar el test. También es más fácil meter errores porque se mezcla la lógica con refactorizaciones prematuras. Primero se confirma el comportamiento y luego se mejora el diseño en el refactor.
+
+PA-2: TDD se enfoca en guiar el diseño del código a partir de pruebas pequeñas y automáticas. BDD se enfoca en describir el comportamiento esperado con lenguaje más cercano al negocio para que el equipo entienda qué se quiere lograr. TDD le sirve mucho al desarrollador y BDD le sirve más al equipo completo, incluyendo negocio o QA. No compiten porque uno ayuda a construir bien la solución y el otro ayuda a entender si esa solución resuelve el problema correcto.
+
+PA-3: La cobertura alta solo dice cuánto código fue ejecutado, no si los resultados son correctos. Un test puede pasar por una línea y aun así no revisar una condición importante. Por ejemplo, si una función calcula descuento pero nadie prueba un valor mayor al permitido, la línea se ejecuta y la cobertura sube, pero el bug sigue ahí. Entonces cobertura no es lo mismo que calidad ni ausencia de defectos.
+
+PA-4: Esa lógica está mal porque un valor intermedio no demuestra qué pasa en los bordes. En este caso yo probaría 0%, 1%, 39%, 40% y 41%, porque ahí es donde normalmente aparecen errores de validación. Si solo pruebas 20%, no sabes si el sistema rechaza 41% o si acepta 0%. Los bordes y los valores pegados a ellos son los que más información dan.
+
+PA-5: TDD y BDD ayudan a que CI/CD tenga señales rápidas y confiables sobre si el cambio rompió algo. En CI/CD los tests automatizados son la base para decidir si el pipeline puede seguir o no. Si no existe una suite sólida, el pipeline se vuelve casi decorativo porque puede dejar pasar errores o fallar por cosas que nadie entendió bien. En la práctica, el equipo termina confiando más en revisiones manuales y eso quita sentido a la automatización.
