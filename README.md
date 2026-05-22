@@ -1,18 +1,25 @@
-análisis inicial
+# Libreria del Centro
 
-regla 1 y regla 2
+Este parcial trata de un sistema sencillo para calcular el precio final de productos con descuento e IVA.
 
-particiones de equivalencia
+## Particiones de equivalencia
+
+Regla 1: el precio base debe ser mayor que cero.
 
 | Regla | Partición | Tipo | Valor representativo | Resultado esperado |
 |---|---|---|---|---|
-| Regla 1 | precio base menor o igual a 0 | inválida | 0 | rechazar con mensaje claro |
-| Regla 1 | precio base mayor a 0 | válida | 100 | crear producto sin error |
-| Regla 2 | descuento menor a 0 | inválida | -1 | rechazar con mensaje claro |
-| Regla 2 | descuento entre 0 y 40 | válida | 20 | aceptar el descuento |
-| Regla 2 | descuento mayor a 40 | inválida | 41 | rechazar con mensaje claro |
+| Regla 1 | precio base <= 0 | inválida | 0 | rechazar con mensaje claro |
+| Regla 1 | precio base > 0 | válida | 100 | crear producto sin error |
 
-análisis de valores límite para la regla 2
+Regla 2: el descuento debe estar entre 0% y 40%.
+
+| Regla | Partición | Tipo | Valor representativo | Resultado esperado |
+|---|---|---|---|---|
+| Regla 2 | descuento < 0 | inválida | -1 | rechazar con mensaje claro |
+| Regla 2 | descuento entre 0 y 40 | válida | 20 | aceptar el descuento |
+| Regla 2 | descuento > 40 | inválida | 41 | rechazar con mensaje claro |
+
+## Valores límite de la regla 2
 
 | Valor | Esperado |
 |---|---|
@@ -23,11 +30,11 @@ análisis de valores límite para la regla 2
 | 40 | válido |
 | 41 | inválido |
 
-pregunta para el administrador sobre la regla 3
+## Pregunta para la regla 3
 
-¿el precio final debe redondearse a dos decimales o se deja con más precisión, porque eso cambia la forma de validar los resultados?
+¿El precio final se redondea a dos decimales o se deja con más precisión? Eso cambia cómo se validan los resultados.
 
-casos de prueba
+## Casos de prueba
 
 | ID | Regla | Descripción | Precondición | Datos de entrada | Pasos | Resultado esperado | Tipo |
 |---|---|---|---|---|---|---|---|
@@ -40,14 +47,12 @@ casos de prueba
 | CP-07 | Regla 3 | calcular precio con descuento medio | producto creado con descuento 20 | precio base 100 | calcular precio final | devuelve 95.20 | Positivo |
 | CP-08 | Regla 3 | calcular precio sin descuento | producto creado | precio base 100, descuento 0 | calcular precio final | devuelve 119.00 | Positivo |
 
-reporte de cobertura
+## Cobertura
 
-=============================== tests coverage ================================
-_______________ coverage: platform win32, python 3.12.9-final-0 _______________
+La suite de pruebas me dio 100% de cobertura en el módulo principal.
 
-Name                               Stmts   Miss  Cover   Missing
-----------------------------------------------------------------
-src\libreria_parcial\__init__.py       1      0   100%
-src\libreria_parcial\producto.py      21      0   100%
-----------------------------------------------------------------
-TOTAL                                 22      0   100%
+| Archivo | Stmts | Miss | Cover |
+|---|---|---|---|
+| src/libreria_parcial/__init__.py | 1 | 0 | 100% |
+| src/libreria_parcial/producto.py | 21 | 0 | 100% |
+| TOTAL | 22 | 0 | 100% |
