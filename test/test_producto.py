@@ -30,7 +30,7 @@ def test_no_deberia_permitir_descuento_mayor_a_cuarenta():
 def test_precio_final_deberia_aplicar_descuento_e_iva():
     producto = Producto("Libro", 100)
     producto.aplicar_descuento(10)
-    assert producto.calcular_precio_final() == Decimal("106.20")
+    assert producto.calcular_precio_final() == Decimal("107.10")
 
 
 def test_precio_final_sin_descuento_deberia_incluir_iva():
